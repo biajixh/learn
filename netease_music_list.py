@@ -7,6 +7,7 @@ import requests
 import urllib2
 import re
 import csv
+import time
 def getSongInfoById(id):
     url1='https://music.163.com/song?id='+id
     header1={
@@ -38,6 +39,7 @@ def getPlayListById(id):
         songInfo['album'] = re.sub(u'所属专辑：','',description[1])
         del songInfo['description']
         playlist.append(songInfo)
+        time.sleep(1)
     return playlist
 l_list = getPlayListById(u'110504446')
 with open('playlist1.csv','wb') as f:
